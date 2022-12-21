@@ -16,7 +16,7 @@ frontend_node_dependencies() {
 
   sudo su - owenzap <<EOF
   cd /home/owenzap/${instancia_add}/frontend
-  npm install
+  npm install --legacy-peer-deps
 EOF
 
   sleep 2
@@ -36,7 +36,7 @@ frontend_node_build() {
 
   sudo su - owenzap <<EOF
   cd /home/owenzap/${instancia_add}/frontend
-  npm install
+  npm install --legacy-peer-deps
   npm run build
 EOF
 
@@ -60,7 +60,7 @@ frontend_update() {
   pm2 stop ${instancia_add}-owenzap-frontend
   git pull
   cd /home/owenzap/${instancia_add}/frontend
-  npm install
+  npm install --legacy-peer-deps
   rm -rf build
   npm run build
   pm2 start ${instancia_add}-owenzap-frontend
